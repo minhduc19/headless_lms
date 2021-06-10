@@ -1,0 +1,12 @@
+{
+    "name": "wmo/necampus",
+    "require": {
+    	"google/apiclient": "^2.0",
+        "cakephp/cakephp": "2.10.22",
+        "lcobucci/jwt": "^3.3",
+        "aws/aws-sdk-php": "^3.158"
+    },
+    "config": {
+        "vendor-dir": "vendor/"
+    }
+}

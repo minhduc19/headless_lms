@@ -1,0 +1,82 @@
+.best_seller, .corporate, .e_commer, .electronic, .fashion, .furniture, .corporate:hover, .best_seller:hover, .corporate:hover, .e_commer:hover, .electronic:hover, .fashion:hover, .furniture:hover{
+	background: url(categories_spirtes.png) no-repeat;
+}
+
+.best_seller{
+	background-position: 0 0;
+	width: 46px;
+	height: 44px;
+}
+
+.corporate{
+	background-position: -51px -10px ;
+	width: 48px;
+	height: 32px;
+}
+
+.e_commer{
+	background-position: -102px -2px ;
+	width: 48px;
+	height: 44px;
+}
+
+.electronic{
+	background-position: -152px -1px ;
+	width: 48px;
+	height: 45px;
+}
+
+.fashion{
+	background-position: -202px -1px ;
+	width: 48px;
+	height: 45px;
+}
+
+.furniture{
+	background-position: -254px 0;
+	width: 47px;
+	height: 48px;
+}
+
+.corporate:hover{
+	background-position: -99px -92px ;
+	width: 48px;
+	height: 32px;
+}
+
+.best_seller:hover{
+	background-position: 0 -52px ;
+	width: 46px;
+	height: 44px;
+}
+
+.corporate:hover{
+	background-position: -50px -57px ;
+	width: 48px;
+	height: 32px;
+}
+
+.e_commer:hover{
+	background-position: -101px -51px ;
+	width: 48px;
+	height: 44px;
+}
+
+.electronic:hover{
+	background-position: -152px -50px ;
+	width: 48px;
+	height: 45px;
+}
+
+.fashion:hover{
+	background-position: -201px -51px ;
+	width: 48px;
+	height: 45px;
+}
+
+.furniture:hover{
+	background-position: -254px -49px ;
+	width: 47px;
+	height: 48px;
+}
+

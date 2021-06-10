@@ -1,0 +1,21 @@
+.search-form {
+	display: inline-block;
+	vertical-align: middle;
+}
+.custom-pagination {
+	margin: 0;
+}
+
+
+table .action-control {
+	text-align: center;
+}
+table td {
+	word-break: break-all;
+}
+table td:first-child {
+	word-break: initial;
+}
+.action-control {
+    text-align: center;
+}

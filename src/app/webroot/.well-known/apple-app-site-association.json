@@ -1,0 +1,16 @@
+{
+  "applinks": {
+    "apps": [],
+      "details": [
+        {
+          "appID":"TQD924PJS5.com.necampus",
+          "paths":[
+            "/lesson/*",
+            "/teacher_lesson/*",
+            "/scene/*",
+            "/t/*"
+           ]
+        }
+      ]
+    }
+}

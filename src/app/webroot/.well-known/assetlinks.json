@@ -1,0 +1,9 @@
+[{
+  "relation": ["delegate_permission/common.handle_all_urls"],
+  "target": {
+    "namespace": "android",
+    "package_name": "com.necampus",
+    "sha256_cert_fingerprints":
+    ["42:45:3A:28:DD:EA:9F:C3:ED:9F:BB:95:3E:6B:7F:12:D6:2A:41:6A:8F:A8:64:6C:9A:27:BA:81:03:77:84:9F"]
+  }
+}]

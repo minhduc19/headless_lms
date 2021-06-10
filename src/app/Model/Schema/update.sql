@@ -1,0 +1,313 @@
+-- ALTER TABLE `courses` ADD `featured` BOOLEAN NULL DEFAULT NULL AFTER `description` ,
+-- ADD `style` ENUM( 'vertical', 'horizontal' ) NULL DEFAULT 'horizontal' AFTER `featured` ,
+-- ADD INDEX ( `featured` ) ;
+-- 
+-- ALTER TABLE `users` CHANGE `id` `id` VARCHAR( 40 ) NOT NULL ;
+-- ALTER TABLE `user_courses` CHANGE `user_id` `user_id` VARCHAR( 40 ) NOT NULL ;
+-- ALTER TABLE `user_favorites` CHANGE `user_id` `user_id` VARCHAR( 40 ) NOT NULL ;
+-- 
+-- CREATE TABLE IF NOT EXISTS `devices` (
+--   `id` int(11) NOT NULL AUTO_INCREMENT,
+--   `device_id` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
+--   `last_time` int(11) DEFAULT NULL,
+--   `register_count` int(11) DEFAULT '0',
+--   `daily_login_count` int(11) NOT NULL DEFAULT '0',
+--   `created` datetime DEFAULT NULL,
+--   `modified` datetime DEFAULT NULL,
+--   PRIMARY KEY (`id`),
+--   KEY `device_id` (`device_id`)
+-- ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+-- 
+-- ALTER TABLE `users` ADD `status` ENUM( 'pending', 'activated' ) NULL DEFAULT 'pending' AFTER `address` ;
+-- ALTER TABLE `users` ADD `password` VARCHAR(255) NULL DEFAULT NULL AFTER `email`;
+-- 
+-- ALTER TABLE `units` ADD `zip_url` VARCHAR( 255 ) NULL DEFAULT NULL AFTER `url` ;
+
+-- ALTER TABLE `user_favorites` CHANGE `entity_type` `entity_type` ENUM( 'course', 'lesson', 'unit' ) CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL DEFAULT NULL ;
+-- ALTER TABLE `tags` ADD `popular` INT NOT NULL DEFAULT '0' AFTER `name` ;
+
+-- ALTER TABLE `lessons` ADD `favorite_count` INT NOT NULL DEFAULT '0' AFTER `short_description` ;
+
+-- CREATE TABLE IF NOT EXISTS `recent_views` (
+--   `user_id` varchar(40) COLLATE utf8_unicode_ci NOT NULL,
+--   `lessons` mediumtext COLLATE utf8_unicode_ci NOT NULL,
+--   `created` datetime DEFAULT NULL,
+--   `modified` datetime DEFAULT NULL,
+--   PRIMARY KEY (`user_id`)
+-- ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- ALTER TABLE `users` ADD `username` VARCHAR( 255 ) NOT NULL AFTER `email`;
+
+-- drop table user_courses;
+-- 
+-- CREATE TABLE IF NOT EXISTS `user_courses` (
+--   `id` int(11) NOT NULL AUTO_INCREMENT,
+--   `user_id` varchar(40) COLLATE utf8_unicode_ci NOT NULL,
+--   `course_id` int(11) NOT NULL,
+--   `lessons` varchar(500) COLLATE utf8_unicode_ci NOT NULL,
+--   `lesson_count` int(11) NOT NULL DEFAULT '0',
+--   `last_view` datetime DEFAULT NULL,
+--   `created` datetime DEFAULT NULL,
+--   `modified` datetime DEFAULT NULL,
+--   PRIMARY KEY (`id`),
+--   KEY `user_id` (`user_id`,`course_id`)
+-- ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
+
+-- ALTER TABLE `courses` ADD `total_lesson` INT NOT NULL DEFAULT '0' AFTER `style` ;
+-- ALTER TABLE `courses` ADD `sort_order` INT NOT NULL DEFAULT '0' AFTER `total_lesson` ;
+-- ALTER TABLE `lessons` ADD `sort_order` INT NOT NULL DEFAULT '0' AFTER `favorite_count` ;
+-- ALTER TABLE `chapters` ADD `sort_order` INT NOT NULL DEFAULT '0' AFTER `course_id` ;
+-- ALTER TABLE `units` ADD `sort_order` INT NOT NULL DEFAULT '0' AFTER `short_description` ;
+-- 
+-- ALTER TABLE `courses` CHANGE `short_description` `short_description` TEXT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL ;
+-- ALTER TABLE `lessons` CHANGE `short_description` `short_description` TEXT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL ;
+-- ALTER TABLE `units` CHANGE `short_description` `short_description` TEXT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL ;
+
+-- CREATE TABLE IF NOT EXISTS `user_lessons` (
+--   `id` int(11) NOT NULL AUTO_INCREMENT,
+--   `user_id` varchar(40) COLLATE utf8_unicode_ci NOT NULL,
+--   `lesson_id` int(11) NOT NULL,
+--   `units` varchar(500) COLLATE utf8_unicode_ci NOT NULL,
+--   `unit_count` int(11) NOT NULL DEFAULT '0',
+--   `last_view` datetime DEFAULT NULL,
+--   `created` datetime DEFAULT NULL,
+--   `modified` datetime DEFAULT NULL,
+--   PRIMARY KEY (`id`),
+--   KEY `user_id` (`user_id`,`lesson_id`)
+-- ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
+
+-- ALTER TABLE `lessons` ADD `total_unit` INT NOT NULL DEFAULT '0' AFTER `sort_order` ;
+
+-- ALTER TABLE `users` CHANGE `social_id` `social_id` VARCHAR( 100 ) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL ;
+
+-- CREATE TABLE IF NOT EXISTS `medias` (
+--   `id` int(11) NOT NULL AUTO_INCREMENT,
+--   `type` enum('image','video','audio') COLLATE utf8_unicode_ci NOT NULL,
+--   `url` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+--   `scene_id` int(11) NOT NULL,
+--   `created` datetime DEFAULT NULL,
+--   `modified` datetime DEFAULT NULL,
+--   PRIMARY KEY (`id`),
+--   KEY `scene_id` (`scene_id`)
+-- ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+-- 
+-- -- --------------------------------------------------------
+-- 
+-- --
+-- -- Table structure for table `scenes`
+-- --
+-- 
+-- CREATE TABLE IF NOT EXISTS `scenes` (
+--   `id` int(11) NOT NULL AUTO_INCREMENT,
+--   `unit_id` int(11) NOT NULL,
+--   `sort_order` int(11) DEFAULT NULL,
+--   `group_code` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
+--   `type` enum('view','interactive','submission') COLLATE utf8_unicode_ci NOT NULL,
+--   `answer` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+--   `thumb` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+--   `title` varchar(500) COLLATE utf8_unicode_ci DEFAULT NULL,
+--   `content` text COLLATE utf8_unicode_ci,
+--   `created` datetime DEFAULT NULL,
+--   `modified` datetime DEFAULT NULL,
+--   PRIMARY KEY (`id`)
+-- ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+-- 
+-- -- --------------------------------------------------------
+-- 
+-- --
+-- -- Table structure for table `user_scenes`
+-- --
+-- 
+-- CREATE TABLE IF NOT EXISTS `user_scenes` (
+--   `id` int(11) NOT NULL AUTO_INCREMENT,
+--   `user_id` varchar(40) COLLATE utf8_unicode_ci NOT NULL,
+--   `unit_id` int(11) NOT NULL,
+--   `scene_id` int(11) NOT NULL,
+--   `answer` mediumtext COLLATE utf8_unicode_ci,
+--   `is_done` tinyint(1) NOT NULL,
+--   `created` datetime DEFAULT NULL,
+--   `modified` datetime DEFAULT NULL,
+--   PRIMARY KEY (`id`),
+--   KEY `user_id` (`user_id`),
+--   KEY `scene_id` (`scene_id`)
+-- ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- ALTER TABLE `units` CHANGE `url` `url` VARCHAR( 255 ) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL ;
+-- ALTER TABLE `medias` ADD `sort_order` INT NOT NULL DEFAULT '0' AFTER `type` ;
+-- ALTER TABLE `medias` CHANGE `scene_id` `scene_id` INT( 11 ) NULL DEFAULT NULL ;
+-- ALTER TABLE `medias` ADD `comment_id` INT NULL DEFAULT NULL AFTER `scene_id` ;
+-- ALTER TABLE `medias` ADD INDEX ( `scene_id` ) ;
+-- ALTER TABLE `medias` ADD INDEX ( `comment_id` ) ;
+-- ALTER TABLE `medias` ADD `cover` VARCHAR( 255 ) NULL DEFAULT NULL AFTER `url` ;
+-- 
+-- CREATE TABLE IF NOT EXISTS `comments` (
+--   `id` int(11) NOT NULL AUTO_INCREMENT,
+--   `user_id` varchar(40) COLLATE utf8_unicode_ci NOT NULL,
+--   `scene_id` int(11) DEFAULT NULL,
+--   `content` text COLLATE utf8_unicode_ci NOT NULL,
+--   `created` datetime DEFAULT NULL,
+--   `modified` datetime DEFAULT NULL,
+--   PRIMARY KEY (`id`),
+--   KEY `scene_id` (`scene_id`)
+-- ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- ALTER TABLE `comments` ADD `unit_id` INT NOT NULL AFTER `user_id` ;
+
+-- CREATE TABLE IF NOT EXISTS `feedbacks` (
+--   `id` int(11) NOT NULL AUTO_INCREMENT,
+--   `scene_id` int(11) NOT NULL,
+--   `type` enum('right','wrong','other') COLLATE utf8_unicode_ci NOT NULL,
+--   `answer` varchar(500) COLLATE utf8_unicode_ci DEFAULT NULL,
+--   `feedback` varchar(500) COLLATE utf8_unicode_ci NOT NULL,
+--   `created` datetime DEFAULT NULL,
+--   `modified` datetime DEFAULT NULL,
+--   PRIMARY KEY (`id`),
+--   KEY `scene_id` (`scene_id`)
+-- ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- ALTER TABLE `scenes` DROP `answer` ;
+
+--ALTER TABLE `units` ADD `type` ENUM( 'html', 'native' ) NOT NULL DEFAULT 'html' AFTER `lesson_id` ;
+
+
+-- CREATE TABLE IF NOT EXISTS `teachers` (
+--   `id` int(11) NOT NULL AUTO_INCREMENT,
+--   `name` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
+--   `description` varchar(1000) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
+--   `email` varchar(100) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
+--   `social_id` varchar(50) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
+--   `avatar` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
+--   `status` enum('active','block') CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL DEFAULT 'active',
+--   `total_follow` int(11) NOT NULL DEFAULT '0',
+--   `skills` varchar(500) COLLATE utf8_unicode_ci DEFAULT NULL,
+--   `created` datetime DEFAULT NULL,
+--   `modified` datetime DEFAULT NULL,
+--   PRIMARY KEY (`id`)
+-- ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
+-- 
+-- -- --------------------------------------------------------
+-- 
+-- --
+-- -- Table structure for table `teacher_lessons`
+-- --
+-- 
+-- CREATE TABLE IF NOT EXISTS `teacher_lessons` (
+--   `id` int(11) NOT NULL AUTO_INCREMENT,
+--   `teacher_id` int(11) NOT NULL,
+--   `title` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+--   `thumb` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+--   `skills` varchar(500) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+--   `created` datetime DEFAULT NULL,
+--   `modified` datetime DEFAULT NULL,
+--   PRIMARY KEY (`id`)
+-- ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+-- 
+-- -- --------------------------------------------------------
+-- 
+-- --
+-- -- Table structure for table `teacher_scenes`
+-- --
+-- 
+-- CREATE TABLE IF NOT EXISTS `teacher_scenes` (
+--   `id` int(11) NOT NULL AUTO_INCREMENT,
+--   `teacher_lesson_id` int(11) NOT NULL,
+--   `sort_order` int(11) DEFAULT NULL,
+--   `group_code` varchar(100) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
+--   `type` enum('view','interactive','submission') CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+--   `thumb` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
+--   `title` varchar(500) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
+--   `content` text CHARACTER SET utf8 COLLATE utf8_unicode_ci,
+--   `created` datetime DEFAULT NULL,
+--   `modified` datetime DEFAULT NULL,
+--   PRIMARY KEY (`id`)
+-- ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
+-- 
+-- -- --------------------------------------------------------
+-- 
+-- --
+-- -- Table structure for table `user_teachers`
+-- --
+-- 
+-- CREATE TABLE IF NOT EXISTS `user_teachers` (
+--   `id` int(11) NOT NULL AUTO_INCREMENT,
+--   `user_id` varchar(40) COLLATE utf8_unicode_ci NOT NULL,
+--   `teacher_id` int(11) NOT NULL,
+--   `created` datetime DEFAULT NULL,
+--   `modified` datetime DEFAULT NULL,
+--   PRIMARY KEY (`id`)
+-- ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+-- 
+-- -- --------------------------------------------------------
+-- 
+-- --
+-- -- Table structure for table `user_teacher_lessons`
+-- --
+-- 
+-- CREATE TABLE IF NOT EXISTS `user_teacher_lessons` (
+--   `id` int(11) NOT NULL AUTO_INCREMENT,
+--   `user_id` varchar(40) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+--   `teacher_lesson_id` int(11) NOT NULL,
+--   `last_view` datetime DEFAULT NULL,
+--   `created` datetime DEFAULT NULL,
+--   `modified` datetime DEFAULT NULL,
+--   PRIMARY KEY (`id`),
+--   KEY `user_id` (`user_id`,`teacher_lesson_id`)
+-- ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
+-- 
+-- -- --------------------------------------------------------
+-- 
+-- --
+-- -- Table structure for table `user_teacher_scenes`
+-- --
+-- 
+-- CREATE TABLE IF NOT EXISTS `user_teacher_scenes` (
+--   `id` int(11) NOT NULL AUTO_INCREMENT,
+--   `user_id` varchar(40) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+--   `teacher_lesson_id` int(11) NOT NULL,
+--   `teacher_scene_id` int(11) NOT NULL,
+--   `answer` mediumtext CHARACTER SET utf8 COLLATE utf8_unicode_ci,
+--   `is_done` tinyint(1) NOT NULL,
+--   `created` datetime DEFAULT NULL,
+--   `modified` datetime DEFAULT NULL,
+--   PRIMARY KEY (`id`),
+--   KEY `user_id` (`user_id`),
+--   KEY `teacher_scene_id` (`teacher_scene_id`)
+-- ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
+-- 
+-- 
+-- ALTER TABLE `medias` ADD `teacher_scene_id` INT NULL DEFAULT NULL AFTER `scene_id` ;
+-- ALTER TABLE `feedbacks` CHANGE `scene_id` `scene_id` INT( 11 ) NULL DEFAULT NULL ;
+-- ALTER TABLE `feedbacks` ADD `teacher_scene_id` INT NULL DEFAULT NULL AFTER `scene_id` ;
+-- ALTER TABLE `teacher_scenes` ADD `teacher_id` INT NOT NULL AFTER `id` ;
+-- 
+-- ALTER TABLE `recent_views` ADD `teacher_lessons` TEXT NULL DEFAULT NULL AFTER `lessons` ;
+-- ALTER TABLE `teachers` ADD `total_lesson` INT NOT NULL DEFAULT '0' AFTER `total_follow` ;
+
+-- ALTER TABLE `teacher_lessons` DROP `skills` ;
+-- ALTER TABLE `teachers` DROP `skills` ;
+-- 
+-- 
+-- CREATE TABLE IF NOT EXISTS `teacher_lesson_skills` (
+--   `id` int(11) NOT NULL AUTO_INCREMENT,
+--   `teacher_lesson_id` int(11) NOT NULL,
+--   `teacher_skill_id` int(11) NOT NULL,
+--   `created` datetime DEFAULT NULL,
+--   `modified` datetime DEFAULT NULL,
+--   PRIMARY KEY (`id`)
+-- ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+-- 
+-- 
+-- CREATE TABLE IF NOT EXISTS `teacher_skills` (
+--   `id` int(11) NOT NULL AUTO_INCREMENT,
+--   `teacher_id` int(11) NOT NULL,
+--   `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+--   `sort_order` int(11) NOT NULL DEFAULT '0',
+--   `lesson_count` int(11) NOT NULL DEFAULT '0',
+--   `created` datetime DEFAULT NULL,
+--   `modified` datetime DEFAULT NULL,
+--   PRIMARY KEY (`id`)
+-- ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- ALTER TABLE `teachers` ADD `password` VARCHAR( 255 ) NULL DEFAULT NULL AFTER `email` ;
+
+--ALTER TABLE `teacher_scenes` CHANGE `type` `type` ENUM( 'view', 'interactive', 'submission', 'select' ) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL ;

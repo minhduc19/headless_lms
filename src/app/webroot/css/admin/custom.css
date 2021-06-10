@@ -1,0 +1,104 @@
+/*add row table*/
+.option-label{float: left;font-size: 13px; margin: 7px 10px 0px 0px;}
+.option-input{float: left;font-size: 13px;}
+/*.tblForm tr td a.add-row-image{display: block; float: left;margin-top: 5px; height: 20px; width: 20px; background: transparent url('../../img/20x20/btn-add.png') no-repeat top left; margin-right: 5px;}
+.tblForm tr td a.add-row-image:hover{background-image: url('../../img/20x20/btn-add-hover.png');}
+.tblForm tr td a.remove-row-image{display: block; float:left;margin-top: 5px; height: 20px; width: 20px; background: transparent url('../../img/20x20/btn-del.png') no-repeat top left;}
+.tblForm tr td a.remove-row-image:hover{background-image:url('../../img/20x20/btn-del-hover.png');}*/
+.tblForm{border-collapse:separate;border-spacing:0 7px;}
+.tblOption{font-size: 14px; width: 50%;}
+
+/*.tblImage tr td a.add-row-image-product{display: block; float: left;margin-top: 5px; height: 20px; width: 20px; background: transparent url('../../img/20x20/btn-add.png') no-repeat top left; margin-right: 5px;}
+.tblImage tr td a.add-row-image-product:hover{background-image: url('../../img/20x20/btn-add-hover.png');}
+.tblImage tr td a.remove-row-image-product{display: block; float:left;margin-top: 5px; height: 20px; width: 20px; background: transparent url('../../img/20x20/btn-del.png') no-repeat top left;}
+.tblImage tr td a.remove-row-image-product:hover{background-image:url('../../img/20x20/btn-del-hover.png');}*/
+.red{color: red;}
+
+.error-message{border-width: 1px;border-color: #ebccd1;color: #FC0751;}
+
+.image-show{width: 100px;margin-left: 20px;}
+.check-main{padding: 8px;}
+.filter{
+    font-size: 13px;
+}
+.btn-custom{
+    width: 25px; 
+    height: 25px; 
+    font-size: 13px; 
+    text-align: center;
+    /*    padding-left: 0; 
+        padding-right: 0;*/
+    float: left;
+    padding: 5px;
+}
+
+.form-control-custom{
+    font-size: 14px;
+    font-weight: normal;
+    color: #333;
+    background-color: #fff;
+    border: 1px solid #e5e5e5;
+    box-shadow: none;
+    transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+}
+
+.slimScrollDiv{
+    position: relative;
+    overflow: auto;
+    height: 175px;
+    display: auto;
+}
+
+.tbListGroup{
+    width: 100%;
+    margin-top: 10px;
+}
+
+form, .pagination {margin: 0}
+table tbody tr {font-size: 13px;}
+
+.table-striped>tbody>tr:nth-of-type(even) { background-color: #f9f9f9;}
+.table-striped>tbody>tr:nth-of-type(odd) { background-color: #fff;}
+.table-striped>tbody>tr:hover {background-color: #f5f5f5;}
+.table-striped tbody tr td {vertical-align: middle;}
+.padding-top-5 {padding-top: 5px;}
+.margin-top-5 {margin-top: 5px;}
+.page-bar{margin-bottom: 10px;}
+.portlet{margin-bottom: 10px;}
+.margin-right-5{margin-right: 5px;}
+.margin-bottom-5{margin-bottom: 5px;}
+.margin-right-2{margin-right: 2px;}
+.caption {
+    word-break: break-all;
+}
+
+.form-horizontal .control-label {
+    text-align: left;
+}
+/*Bulk update Gamota News*/
+.bulk-update {
+    width: 100%;
+    text-align: left;
+}
+.cover-bulk-update{
+    margin-right: 8px;
+}
+
+.list-bulk-update{
+    background-color: #cb5a5e;
+}
+
+.short-content{
+    line-height: 19px !important;
+    height: 100px;
+    display: block;
+    margin: 0 auto;
+    -webkit-line-clamp: 5;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -o-text-overflow: ellipsis;
+    -moz-text-overflow: ellipsis;
+}
+.input-small-index{
+    width: 100% !important;
+}

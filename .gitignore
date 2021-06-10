@@ -1,0 +1,11 @@
+/nbproject
+/src/app/vendor
+/src/app/tmp
+/src/app/Config/bootstrap.php
+/src/app/Config/database.php
+/src/app/webroot/img/post_imgs/*
+/src/app/webroot/units/*
+/server_config/variables.rb
+/server_log/*
+/src/app/webroot/files
+/src/app/nbproject/private/
